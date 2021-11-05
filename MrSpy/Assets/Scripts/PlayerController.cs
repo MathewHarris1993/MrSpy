@@ -9,7 +9,8 @@ public class PlayerController : MonoBehaviour
     public float speed = 10.0f;
     public float xRange = 20.0f;
     public float zRange = 30.0f;
-    
+
+    public GameObject bulletPrefavb;
 
 
     // Start is called before the first frame update
@@ -34,6 +35,7 @@ public class PlayerController : MonoBehaviour
         }
         horizontalInput = Input.GetAxis("Horizontal");
         transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed);
+       
 
         if (transform.position.z < -zRange)
         {
@@ -47,6 +49,11 @@ public class PlayerController : MonoBehaviour
         verticalInput = Input.GetAxis("Vertical");
         transform.Translate(Vector3.forward * verticalInput * Time.deltaTime * speed);
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(bulletPrefavb, transform.position, bulletPrefavb.transform.rotation);
+
+        }
     }
 }
 
