@@ -17,6 +17,7 @@ public class ChaseCam : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
+        //move cam with player
         transform.position = Player.transform.position + offset;
 
     }

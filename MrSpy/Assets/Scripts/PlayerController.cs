@@ -33,10 +33,9 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
 
         }
-        horizontalInput = Input.GetAxis("Horizontal");
-        transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed);
+        
        
-
+        //set limits on z movement
         if (transform.position.z < -zRange)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, -zRange);
@@ -46,9 +45,16 @@ public class PlayerController : MonoBehaviour
             {
             transform.position = new Vector3(transform.position.x, transform.position.y, zRange);
         }
+
+        //movement controls
         verticalInput = Input.GetAxis("Vertical");
         transform.Translate(Vector3.forward * verticalInput * Time.deltaTime * speed);
 
+        horizontalInput = Input.GetAxis("Horizontal");
+        transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed);
+    
+
+        //fire bullet
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Instantiate(bulletPrefavb, transform.position, bulletPrefavb.transform.rotation);
