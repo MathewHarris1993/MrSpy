@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     public float horizontalInput;
     public float verticalInput;
     public float speed = 10.0f;
-    public float xRange = 20.0f;
+    public float xRange = 30.0f;
     public float zRange = 30.0f;
     private GameObject focalPoint;
     public GameObject bulletPrefavb;

@@ -6,7 +6,7 @@ public class BulletSpeed : MonoBehaviour
 {
     private GameObject focalPoint;
     public float bulletSpeed = 40f;
-    private int zrange = 30;
+    private int zrange = 40;
     private int xrange = 30;
     // Start is called before the first frame update
     void Start()
