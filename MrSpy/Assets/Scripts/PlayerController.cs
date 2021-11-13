@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private GameObject focalPoint;
     public GameObject bulletPrefavb;
     public float fpSpeed = 30;
+    
 
 
     // Start is called before the first frame update
@@ -59,7 +60,9 @@ public class PlayerController : MonoBehaviour
         //fire bullet
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(bulletPrefavb, transform.position, bulletPrefavb.transform.rotation);
+            Vector3 offset = new Vector3(1, 0, 1);
+
+            Instantiate(bulletPrefavb, transform.position +offset, bulletPrefavb.transform.rotation);
 
         }
     }

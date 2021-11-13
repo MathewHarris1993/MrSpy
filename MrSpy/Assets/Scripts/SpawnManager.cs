@@ -6,10 +6,12 @@ public class SpawnManager : MonoBehaviour
 {
     //variables
     public GameObject enemyPrefab;
-    private float spawnRange = 25;
     public int enemyCount;
     public int waveNumber = 1;
-
+    public GameObject player;
+    Vector3 spawnOne = new Vector3(10, 1, 10);
+    Vector3 spawnTwo = new Vector3(0, 1, 10);
+    Vector3 spawnThree = new Vector3(-10, 1, 10);
 
     // Start is called before the first frame update
     void Start()
@@ -24,32 +26,27 @@ public class SpawnManager : MonoBehaviour
     {
         
         enemyCount = FindObjectsOfType<Enemy>().Length;
+        
+
         if (enemyCount == 0)
         {
-            waveNumber++;
-            SpawnEnemyWaves(waveNumber);
-        
+       
+            Instantiate(enemyPrefab, spawnOne, enemyPrefab.transform.rotation);
+            Instantiate(enemyPrefab, spawnTwo, enemyPrefab.transform.rotation);
+            Instantiate(enemyPrefab, spawnThree, enemyPrefab.transform.rotation);
         }
     }
    
     //spawn multiple enemies
     void SpawnEnemyWaves(int enemiesToSpawn)
     {
-        for (int i = 0; i < enemiesToSpawn; i++)
-        {
-            Instantiate(enemyPrefab, GenerateSpawn(), enemyPrefab.transform.rotation);
-        }
+            
+
+            Instantiate(enemyPrefab,spawnOne , enemyPrefab.transform.rotation);
+            Instantiate(enemyPrefab, spawnTwo, enemyPrefab.transform.rotation);
+            Instantiate(enemyPrefab, spawnThree, enemyPrefab.transform.rotation);
     }
 
-    //return spawn location
-    private Vector3 GenerateSpawn()
-    {
-        //spawn location random
-        float spawnPosx = Random.Range(-spawnRange, spawnRange);
-        float spawnPosy = Random.Range(-spawnRange, spawnRange);
-        Vector3 randomPos = new Vector3(spawnPosx, 0, spawnPosy);
 
-        return randomPos;
 
-    }
 }
